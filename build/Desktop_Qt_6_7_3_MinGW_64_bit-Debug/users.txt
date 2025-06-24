@@ -1,0 +1,12 @@
+Buyer;testbuyer;buyer123
+Seller;testseller;seller123
+Buyer;b;b
+Buyer;Andrzej;Janus
+Buyer;Jacek;Placek
+Buyer;x;d
+Seller;c;c
+Seller;s2;s2
+Buyer;abc;abc
+Seller;s;s
+Buyer;Jajami;Omate
+Buyer;abcd;abcd

@@ -1,0 +1,6 @@
+1;Smartphone;1999.99;7;Latest model;Elektronika;TestShop;testseller;8
+2;Headphones;299.99;18;Noise cancelling;Elektronika;TestShop;testseller;2
+3;T-shirt;49.99;46;Cotton, size M;Moda;TestShop;testseller;4
+4;Sneakers;299.99;27;Comfortable running shoes;Moda;TestShop;testseller;3
+5;Mango;2;49;Swieze Mango Place LIzac;Zdrowie i Uroda;MangaStore;s;1
+6;Sruba m4x40;0.35;1985;Din912;Narzędzia i Majsterkowanie;MangaStore;s;15
