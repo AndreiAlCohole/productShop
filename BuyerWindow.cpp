@@ -57,7 +57,7 @@ BuyerWindow::~BuyerWindow()
         ui->listViewProducts->clear();
 
         for (auto& p : products) {
-            QString itemText = QString("%1 | Cena: %2 zł | Ilość: %3")
+            QString itemText = QString("%1 | Price: %2 zł | Quantity: %3")
                                    .arg(QString::fromStdString(p->getName()))
                                    .arg(p->getPrice())
                                    .arg(p->getQuantity());
@@ -72,33 +72,33 @@ void BuyerWindow::on_addToCartButton_clicked()
      cout << "Kliklo: " <<endl;
     QModelIndexList selectedIndexes = ui->listViewProducts->selectionModel()->selectedIndexes();
     if (selectedIndexes.isEmpty()) {
-        QMessageBox::warning(this, "Błąd", "Wybierz produkt do dodania.");
+        QMessageBox::warning(this, "Error", "Select a product to add.");
         return;
     }
 
     int selectedIndex = selectedIndexes.first().row();
     auto products = controller->getAllProducts();
     if (selectedIndex < 0 || selectedIndex >= static_cast<int>(products.size())) {
-        QMessageBox::warning(this, "Błąd", "Niepoprawny wybór produktu.");
+        QMessageBox::warning(this, "Error", "Invalid product selection.");
         return;
     }
 
     bool ok;
     int qty = ui->spinBoxQuantity->value();
     if (qty <= 0) {
-        QMessageBox::warning(this, "Błąd", "Wprowadź ilość większą niż 0.");
+        QMessageBox::warning(this, "Error", "Enter a quantity greater than 0.");
         return;
     }
 
     auto product = products[selectedIndex];
     if (product->getQuantity() < qty) {
-        QMessageBox::warning(this, "Błąd", "Niewystarczająca ilość produktu na stanie.");
+        QMessageBox::warning(this, "Error", "Insufficient product quantity in stock.");
         return;
     }
 
     buyer->addToCart(product, qty);
 
-    QMessageBox::information(this, "Sukces", "Dodano do koszyka.");
+    QMessageBox::information(this, "Success", "Added to cart.");
 }
 
 void BuyerWindow::on_viewCartButton_clicked()
@@ -106,7 +106,7 @@ void BuyerWindow::on_viewCartButton_clicked()
     QString cartDetails;
     std::map<std::string, int> counter;
 
-    for (auto& p : buyer->getCart()) {  // Tu trzeba dodać metodę getCart() w Buyer
+    for (auto& p : buyer->getCart()) {  
         counter[p->getName()]++;
     }
 
@@ -122,21 +122,20 @@ void BuyerWindow::on_viewCartButton_clicked()
             }
         }
     }
-    cartDetails += "Razem: " + QString::number(total) + " zł";
-
-    QMessageBox::information(this, "Twój koszyk", cartDetails);
+    cartDetails += "Total: " + QString::number(total) + " zł";
+    QMessageBox::information(this, "Your cart", cartDetails);
 }
 
 void BuyerWindow::on_checkoutButton_clicked()
 {
     if (buyer->getCart().empty()) {
-        QMessageBox::information(this, "Koszyk pusty", "Twój koszyk jest pusty.");
+        QMessageBox::information(this, "Cart empty", "Your cart is empty.");
         return;
     }
     buyer->checkout();
     controller->saveData();
 
-    QMessageBox::information(this, "Zakup zakończony", "Dziękujemy za zakupy!");
+    QMessageBox::information(this, "Purchase complete", "Thank you for your purchase!");
 
     loadProducts();  // odświeżenie listy produktów po zakupie
 }
@@ -165,7 +164,7 @@ void BuyerWindow::on_viewPurchaseHistoryButton_clicked()
 
         auto history = buyer->getPurchaseHistory();
         if (history.empty()) {
-            ui->listWidgetPurchaseHistory->addItem("Brak zakupów.");
+            ui->listWidgetPurchaseHistory->addItem("No purchases.");
             return;
         }
 
@@ -177,7 +176,7 @@ void BuyerWindow::on_viewPurchaseHistoryButton_clicked()
         }
 
         for (const auto& [name, pair] : grouped) {
-            QString itemText = QString("%1 | Cena: %2 zł | Ilość: %3")
+            QString itemText = QString("%1 | Price: %2 zł | Quantity: %3")
                                    .arg(QString::fromStdString(name))
                                    .arg(pair.first)
                                    .arg(pair.second);
@@ -207,53 +206,53 @@ void BuyerWindow::on_buttonRemoveFromCart_clicked()
 {
     QModelIndexList selectedIndexes = ui->listViewProducts->selectionModel()->selectedIndexes();
     if (selectedIndexes.isEmpty()) {
-        QMessageBox::warning(this, "Błąd", "Wybierz produkt do usunięcia.");
+        QMessageBox::warning(this, "Error", "Select a product to remove.");
         return;
     }
 
     int selectedIndex = selectedIndexes.first().row();
     auto products = controller->getAllProducts();
     if (selectedIndex < 0 || selectedIndex >= static_cast<int>(products.size())) {
-        QMessageBox::warning(this, "Błąd", "Niepoprawny wybór produktu.");
+        QMessageBox::warning(this, "Error", "Invalid product selection.");
         return;
     }
 
     int qty = ui->spinBoxQuantity->value();
     if (qty <= 0) {
-        QMessageBox::warning(this, "Błąd", "Wprowadź ilość większą niż 0.");
+        QMessageBox::warning(this, "Error", "Enter a quantity greater than 0.");
         return;
     }
 
     auto product = products[selectedIndex];
     buyer->removeFromCart(product, qty);
 
-    QMessageBox::information(this, "Sukces", "Usunięto z koszyka.");
+    QMessageBox::information(this, "Success", "Removed from cart.");
 }
 
 void BuyerWindow::on_buttonAddReview_clicked()
 {
     QModelIndexList selectedIndexes = ui->listViewProducts->selectionModel()->selectedIndexes();
     if (selectedIndexes.isEmpty()) {
-        QMessageBox::warning(this, "Błąd", "Wybierz produkt, do którego chcesz dodać opinię.");
+        QMessageBox::warning(this, "Error", "Select a product to review.");
         return;
     }
 
     int selectedIndex = selectedIndexes.first().row();
     auto products = controller->getAllProducts();
     if (selectedIndex < 0 || selectedIndex >= static_cast<int>(products.size())) {
-        QMessageBox::warning(this, "Błąd", "Niepoprawny wybór produktu.");
+        QMessageBox::warning(this, "Error", "Invalid product selection.");
         return;
     }
 
     QString reviewText = ui->textEditReview->toPlainText();
     if (reviewText.isEmpty()) {
-        QMessageBox::warning(this, "Błąd", "Opinia nie może być pusta.");
+        QMessageBox::warning(this, "Error", "Review cannot be empty.");
         return;
     }
 
-    int rating = ui->spinBoxRating->value();  // Załóżmy, że masz QSpinBox do oceny
+    int rating = ui->spinBoxRating->value();  // QSpinBox do oceny
     if (rating < 1 || rating > 5) {
-        QMessageBox::warning(this, "Błąd", "Ocena musi być w zakresie 1-5.");
+        QMessageBox::warning(this, "Error", "Rating must be between 1 and 5.");
         return;
     }
 
@@ -261,10 +260,10 @@ void BuyerWindow::on_buttonAddReview_clicked()
 
     product->addReview(buyer->getUsername(), rating, reviewText.toStdString());
 
-    QMessageBox::information(this, "Sukces", "Dodano opinię.");
+    QMessageBox::information(this, "Success", "Review added.");
 
     ui->textEditReview->clear(); // czyścimy pole opinii po dodaniu
-    ui->spinBoxRating->setValue(5); // np. reset oceny na 5
+    ui->spinBoxRating->setValue(5); 
 
     controller->saveData();  // zapisujemy dane po dodaniu opinii
 }
@@ -275,30 +274,42 @@ void BuyerWindow::showProductContextMenu(const QPoint& pos)
     if (!item) return;
 
     QMenu contextMenu;
-    QAction* viewReviewsAction = contextMenu.addAction("Pokaż opinie");
+    QAction* viewReviewsAction = contextMenu.addAction("Show reviews");
+    QAction* addToCartAction = contextMenu.addAction("Add to cart");
 
     QAction* selectedAction = contextMenu.exec(ui->listViewProducts->viewport()->mapToGlobal(pos));
+    if (!selectedAction) return;
+
+    int index = ui->listViewProducts->row(item);
+    auto products = controller->getAllProducts();
+
+    if (index < 0 || index >= static_cast<int>(products.size())) return;
+
+    auto product = products[index];
+
     if (selectedAction == viewReviewsAction) {
-        int index = ui->listViewProducts->row(item);
-        auto products = controller->getAllProducts();
-
-        if (index < 0 || index >= static_cast<int>(products.size())) return;
-
-        auto product = products[index];
         QString reviewsText;
-
         for (const auto& review : product->getReviews()) {
-            reviewsText += QString("Użytkownik: %1\nOcena: %2/5\nKomentarz: %3\n\n")
-                               .arg(QString::fromStdString(review.getUsername()))
-                               .arg(review.getRating())
-                               .arg(QString::fromStdString(review.getComment()));
+            reviewsText += QString("User: %1\nRating: %2/5\nComment: %3\n\n")
+            .arg(QString::fromStdString(review.getUsername()))
+                .arg(review.getRating())
+                .arg(QString::fromStdString(review.getComment()));
+        }
+        if (reviewsText.isEmpty())
+            reviewsText = "No reviews for this product.";
 
+        QMessageBox::information(this, "Reviews", reviewsText);
+    }
+    else if (selectedAction == addToCartAction) {
+        int quantity = 1;
+
+        if (product->getQuantity() < quantity) {
+            QMessageBox::warning(this, "Error", "Insufficient quantity in stock.");
+            return;
         }
 
-        if (reviewsText.isEmpty())
-            reviewsText = "Brak opinii dla tego produktu.";
-
-        QMessageBox::information(this, "Opinie", reviewsText);
+        buyer->addToCart(product, quantity);
+        QMessageBox::information(this, "Added", "Product added to cart.");
     }
 }
 

@@ -10,12 +10,14 @@
 #define UI_BUYERWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -31,7 +33,7 @@ class Ui_BuyerWindow
 {
 public:
     QWidget *centralwidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_7;
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *verticalLayout_7;
@@ -67,6 +69,7 @@ public:
     QPushButton *viewPurchaseHistoryButton;
     QListWidget *listWidgetPurchaseHistory;
     QMenuBar *menubar;
+    QMenu *menuBuyers_Cocpit;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *BuyerWindow)
@@ -76,10 +79,10 @@ public:
         BuyerWindow->resize(1048, 554);
         centralwidget = new QWidget(BuyerWindow);
         centralwidget->setObjectName("centralwidget");
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(10, 10, 1015, 481));
-        horizontalLayout_7 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(10, 10, 1015, 481));
+        horizontalLayout_7 = new QHBoxLayout(layoutWidget);
         horizontalLayout_7->setObjectName("horizontalLayout_7");
         horizontalLayout_7->setContentsMargins(0, 0, 0, 0);
         verticalLayout_8 = new QVBoxLayout();
@@ -88,12 +91,12 @@ public:
         verticalLayout_7->setObjectName("verticalLayout_7");
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        viewProductsButton = new QPushButton(widget);
+        viewProductsButton = new QPushButton(layoutWidget);
         viewProductsButton->setObjectName("viewProductsButton");
 
         horizontalLayout_2->addWidget(viewProductsButton);
 
-        comboBoxSort = new QComboBox(widget);
+        comboBoxSort = new QComboBox(layoutWidget);
         comboBoxSort->addItem(QString());
         comboBoxSort->addItem(QString());
         comboBoxSort->addItem(QString());
@@ -108,7 +111,7 @@ public:
 
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName("verticalLayout_6");
-        listViewProducts = new QListWidget(widget);
+        listViewProducts = new QListWidget(layoutWidget);
         listViewProducts->setObjectName("listViewProducts");
 
         verticalLayout_6->addWidget(listViewProducts);
@@ -121,12 +124,12 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        addToCartButton = new QPushButton(widget);
+        addToCartButton = new QPushButton(layoutWidget);
         addToCartButton->setObjectName("addToCartButton");
 
         horizontalLayout_3->addWidget(addToCartButton);
 
-        spinBoxQuantity = new QSpinBox(widget);
+        spinBoxQuantity = new QSpinBox(layoutWidget);
         spinBoxQuantity->setObjectName("spinBoxQuantity");
 
         horizontalLayout_3->addWidget(spinBoxQuantity);
@@ -151,19 +154,19 @@ public:
         horizontalLayout_6->setObjectName("horizontalLayout_6");
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
-        spinBoxRating = new QSpinBox(widget);
+        spinBoxRating = new QSpinBox(layoutWidget);
         spinBoxRating->setObjectName("spinBoxRating");
         spinBoxRating->setMinimum(1);
         spinBoxRating->setMaximum(5);
 
         verticalLayout->addWidget(spinBoxRating);
 
-        textEditReview = new QTextEdit(widget);
+        textEditReview = new QTextEdit(layoutWidget);
         textEditReview->setObjectName("textEditReview");
 
         verticalLayout->addWidget(textEditReview);
 
-        buttonAddReview = new QPushButton(widget);
+        buttonAddReview = new QPushButton(layoutWidget);
         buttonAddReview->setObjectName("buttonAddReview");
 
         verticalLayout->addWidget(buttonAddReview);
@@ -173,12 +176,12 @@ public:
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName("horizontalLayout_5");
-        textEditReviewComment = new QTextEdit(widget);
+        textEditReviewComment = new QTextEdit(layoutWidget);
         textEditReviewComment->setObjectName("textEditReviewComment");
 
         horizontalLayout_5->addWidget(textEditReviewComment);
 
-        listWidgetCart = new QListWidget(widget);
+        listWidgetCart = new QListWidget(layoutWidget);
         listWidgetCart->setObjectName("listWidgetCart");
 
         horizontalLayout_5->addWidget(listWidgetCart);
@@ -186,7 +189,7 @@ public:
 
         horizontalLayout_6->addLayout(horizontalLayout_5);
 
-        logoutButton = new QPushButton(widget);
+        logoutButton = new QPushButton(layoutWidget);
         logoutButton->setObjectName("logoutButton");
 
         horizontalLayout_6->addWidget(logoutButton);
@@ -203,19 +206,19 @@ public:
         verticalLayout_4->setObjectName("verticalLayout_4");
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        buttonRemoveFromCart = new QPushButton(widget);
+        buttonRemoveFromCart = new QPushButton(layoutWidget);
         buttonRemoveFromCart->setObjectName("buttonRemoveFromCart");
 
         horizontalLayout->addWidget(buttonRemoveFromCart);
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName("verticalLayout_3");
-        viewCartButton = new QPushButton(widget);
+        viewCartButton = new QPushButton(layoutWidget);
         viewCartButton->setObjectName("viewCartButton");
 
         verticalLayout_3->addWidget(viewCartButton);
 
-        checkoutButton = new QPushButton(widget);
+        checkoutButton = new QPushButton(layoutWidget);
         checkoutButton->setObjectName("checkoutButton");
 
         verticalLayout_3->addWidget(checkoutButton);
@@ -226,7 +229,7 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout);
 
-        labelTotalPrice = new QLabel(widget);
+        labelTotalPrice = new QLabel(layoutWidget);
         labelTotalPrice->setObjectName("labelTotalPrice");
 
         verticalLayout_4->addWidget(labelTotalPrice);
@@ -236,12 +239,12 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
-        viewPurchaseHistoryButton = new QPushButton(widget);
+        viewPurchaseHistoryButton = new QPushButton(layoutWidget);
         viewPurchaseHistoryButton->setObjectName("viewPurchaseHistoryButton");
 
         verticalLayout_2->addWidget(viewPurchaseHistoryButton);
 
-        listWidgetPurchaseHistory = new QListWidget(widget);
+        listWidgetPurchaseHistory = new QListWidget(layoutWidget);
         listWidgetPurchaseHistory->setObjectName("listWidgetPurchaseHistory");
 
         verticalLayout_2->addWidget(listWidgetPurchaseHistory);
@@ -256,10 +259,14 @@ public:
         menubar = new QMenuBar(BuyerWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 1048, 25));
+        menuBuyers_Cocpit = new QMenu(menubar);
+        menuBuyers_Cocpit->setObjectName("menuBuyers_Cocpit");
         BuyerWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(BuyerWindow);
         statusbar->setObjectName("statusbar");
         BuyerWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menuBuyers_Cocpit->menuAction());
 
         retranslateUi(BuyerWindow);
 
@@ -284,6 +291,7 @@ public:
         checkoutButton->setText(QCoreApplication::translate("BuyerWindow", "Checkout", nullptr));
         labelTotalPrice->setText(QCoreApplication::translate("BuyerWindow", "TextLabel", nullptr));
         viewPurchaseHistoryButton->setText(QCoreApplication::translate("BuyerWindow", "History", nullptr));
+        menuBuyers_Cocpit->setTitle(QCoreApplication::translate("BuyerWindow", "Buyers Cocpit", nullptr));
     } // retranslateUi
 
 };

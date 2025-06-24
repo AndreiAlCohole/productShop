@@ -28,7 +28,7 @@ void AdminWindow::on_viewUsersButton_clicked()
 void AdminWindow::on_addCategoryButton_clicked()
 {
     bool ok;
-    QString cname = QInputDialog::getText(this, "Dodaj kategorię", "Nazwa:", QLineEdit::Normal, "", &ok);
+    QString cname = QInputDialog::getText(this, "Add category", "Name:", QLineEdit::Normal, "", &ok);
     if (ok && !cname.isEmpty()) {
         admin->addCategory(controller->getCategoriesRef(), cname.toStdString());
         refreshCategories();
@@ -77,7 +77,7 @@ void AdminWindow::on_deleteProductButton_clicked()
     refreshProducts();
 }
 
-// ----- pomocnicze funkcje -----
+
 
 void AdminWindow::refreshCategories()
 {
@@ -101,14 +101,14 @@ void AdminWindow::refreshProducts()
 
 void AdminWindow::on_buttonViewReviews_clicked()
 {
-    ui->comboBoxRatingFilter->setCurrentIndex(0); // reset filtra
-    loadReviews(0); // 0 = brak filtra
+    ui->comboBoxRatingFilter->setCurrentIndex(0); // reset filter
+    loadReviews(0); // 0 = no filter
 }
 
 void AdminWindow::loadReviews(int filterRating)
 {
     ui->listWidgetReviews->clear();
-    currentReviews.clear(); // zeruj poprzednie
+    currentReviews.clear(); // clear previous
 
     auto& products = controller->getAllProductsRef();
 
@@ -119,19 +119,19 @@ void AdminWindow::loadReviews(int filterRating)
             if (filterRating != 0 && review.getRating() != filterRating)
                 continue;
 
-            QString entry = QString("Produkt: %1 | Użytkownik: %2 | Ocena: %3 | Komentarz: %4")
+            QString entry = QString("Product: %1 | User: %2 | Rating: %3 | Comment: %4")
                                 .arg(QString::fromStdString(productName))
                                 .arg(QString::fromStdString(review.getUsername()))
                                 .arg(review.getRating())
                                 .arg(QString::fromStdString(review.getComment()));
 
             ui->listWidgetReviews->addItem(entry);
-            currentReviews.emplace_back(product, review); // zapamiętaj do późniejszego usuwania
+            currentReviews.emplace_back(product, review); 
         }
     }
 
     if (ui->listWidgetReviews->count() == 0)
-        ui->listWidgetReviews->addItem("Brak opinii.");
+        ui->listWidgetReviews->addItem("No reviews.");
 }
 void AdminWindow::on_comboBoxRatingFilter_currentIndexChanged(int index)
 {
@@ -162,6 +162,6 @@ void AdminWindow::on_buttonDeleteReview_clicked()
 void AdminWindow::on_logoutButton_clicked()
 {
     emit logoutRequested();
-    this->close(); // opcjonalnie zamykasz okno
+    this->close(); 
 }
 

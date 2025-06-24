@@ -10,10 +10,12 @@
 #define UI_SELLERWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -37,6 +39,7 @@ public:
     QPushButton *viewProductsButton;
     QPushButton *editProductButton;
     QMenuBar *menubar;
+    QMenu *menuSellers_Cocpipt;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *SellerWindow)
@@ -92,10 +95,14 @@ public:
         menubar = new QMenuBar(SellerWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 800, 25));
+        menuSellers_Cocpipt = new QMenu(menubar);
+        menuSellers_Cocpipt->setObjectName("menuSellers_Cocpipt");
         SellerWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(SellerWindow);
         statusbar->setObjectName("statusbar");
         SellerWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menuSellers_Cocpipt->menuAction());
 
         retranslateUi(SellerWindow);
 
@@ -111,6 +118,7 @@ public:
         removeProductButton->setText(QCoreApplication::translate("SellerWindow", "Remove product", nullptr));
         viewProductsButton->setText(QCoreApplication::translate("SellerWindow", "View Products", nullptr));
         editProductButton->setText(QCoreApplication::translate("SellerWindow", "Edit Product", nullptr));
+        menuSellers_Cocpipt->setTitle(QCoreApplication::translate("SellerWindow", "Sellers Cocpipt", nullptr));
     } // retranslateUi
 
 };

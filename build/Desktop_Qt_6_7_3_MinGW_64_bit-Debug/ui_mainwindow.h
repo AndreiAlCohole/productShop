@@ -27,7 +27,7 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QPushButton *exitButton;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *statusLabel;
     QLineEdit *lineEditLogin;
@@ -49,34 +49,34 @@ public:
         exitButton->setGeometry(QRect(650, 10, 90, 29));
         exitButton->setMouseTracking(false);
         exitButton->setCheckable(false);
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(270, 100, 231, 301));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(270, 100, 231, 301));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        statusLabel = new QLabel(widget);
+        statusLabel = new QLabel(layoutWidget);
         statusLabel->setObjectName("statusLabel");
 
         verticalLayout->addWidget(statusLabel);
 
-        lineEditLogin = new QLineEdit(widget);
+        lineEditLogin = new QLineEdit(layoutWidget);
         lineEditLogin->setObjectName("lineEditLogin");
 
         verticalLayout->addWidget(lineEditLogin);
 
-        lineEditPassword = new QLineEdit(widget);
+        lineEditPassword = new QLineEdit(layoutWidget);
         lineEditPassword->setObjectName("lineEditPassword");
         lineEditPassword->setEchoMode(QLineEdit::EchoMode::Password);
 
         verticalLayout->addWidget(lineEditPassword);
 
-        loginButton = new QPushButton(widget);
+        loginButton = new QPushButton(layoutWidget);
         loginButton->setObjectName("loginButton");
 
         verticalLayout->addWidget(loginButton);
 
-        registerButton = new QPushButton(widget);
+        registerButton = new QPushButton(layoutWidget);
         registerButton->setObjectName("registerButton");
 
         verticalLayout->addWidget(registerButton);
@@ -100,8 +100,8 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         exitButton->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         statusLabel->setText(QString());
-        loginButton->setText(QCoreApplication::translate("MainWindow", "Zaloguj", nullptr));
-        registerButton->setText(QCoreApplication::translate("MainWindow", "Zarejestruj", nullptr));
+        loginButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
+        registerButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
     } // retranslateUi
 
 };

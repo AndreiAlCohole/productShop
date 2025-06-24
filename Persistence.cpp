@@ -71,7 +71,7 @@ vector<shared_ptr<User>> loadUsers() {
     vector<shared_ptr<User>> users;
     ifstream userFile("users.txt");
     if (!userFile.is_open()) {
-        cerr << "Nie można otworzyć pliku users.txt" << endl;
+        cerr << "Cannot open users.txt file" << endl;
         return {};
     }
 
@@ -89,7 +89,7 @@ vector<shared_ptr<User>> loadUsers() {
         else if (type == "Admin")
             users.push_back(make_shared<Admin>(username, password));
         else
-            cerr << "Nieznany typ: " << type << endl;
+            cerr << "Unknown type: " << type << endl;
     }
     return users;
 }
