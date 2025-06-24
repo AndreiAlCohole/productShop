@@ -24,7 +24,7 @@ void RegisterWindow::on_registerButton_clicked()
     QString type = ui->accountTypeComboBox->currentText();
 
     if (username.isEmpty() || password.isEmpty()) {
-        QMessageBox::warning(this, "Błąd", "Podaj nazwę i hasło.");
+        QMessageBox::warning(this, "Error", "Enter username and password.");
         return;
     }
 
@@ -33,9 +33,9 @@ void RegisterWindow::on_registerButton_clicked()
     } else if (type == "Seller") {
         newUser = std::make_shared<Seller>(username.toStdString(), password.toStdString());
     } else {
-        QMessageBox::warning(this, "Błąd", "Wybierz typ konta.");
+        QMessageBox::warning(this, "Error", "Select account type.");
         return;
     }
 
-    accept(); // zamyka okno rejestracji
+    accept(); // zamykanie
 }

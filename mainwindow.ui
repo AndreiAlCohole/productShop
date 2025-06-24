@@ -33,7 +33,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -63,14 +63,14 @@
      <item>
       <widget class="QPushButton" name="loginButton">
        <property name="text">
-        <string>Zaloguj</string>
+        <string>Login</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="registerButton">
        <property name="text">
-        <string>Zarejestruj</string>
+        <string>Register</string>
        </property>
       </widget>
      </item>

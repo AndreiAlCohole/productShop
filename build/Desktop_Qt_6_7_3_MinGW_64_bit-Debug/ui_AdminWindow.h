@@ -10,11 +10,13 @@
 #define UI_ADMINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -30,7 +32,7 @@ public:
     QPushButton *logoutButton;
     QPushButton *removeReviewButton;
     QPushButton *buttonViewReviews;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *horizontalLayout_4;
     QVBoxLayout *verticalLayout_2;
@@ -50,13 +52,14 @@ public:
     QPushButton *deleteProductButton;
     QPushButton *viewProductsButton;
     QListWidget *listWidgetProducts;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_5;
     QComboBox *comboBoxRatingFilter;
     QPushButton *buttonDeleteReview;
     QListWidget *listWidgetReviews;
     QMenuBar *menubar;
+    QMenu *menuAdmin_cocpit;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *AdminWindow)
@@ -71,14 +74,14 @@ public:
         logoutButton->setGeometry(QRect(690, 510, 90, 29));
         removeReviewButton = new QPushButton(centralwidget);
         removeReviewButton->setObjectName("removeReviewButton");
-        removeReviewButton->setGeometry(QRect(680, 10, 90, 29));
+        removeReviewButton->setGeometry(QRect(670, 360, 90, 29));
         buttonViewReviews = new QPushButton(centralwidget);
         buttonViewReviews->setObjectName("buttonViewReviews");
-        buttonViewReviews->setGeometry(QRect(550, 390, 90, 29));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(10, 0, 461, 513));
-        verticalLayout_5 = new QVBoxLayout(widget);
+        buttonViewReviews->setGeometry(QRect(570, 360, 90, 29));
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(10, 0, 461, 513));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget);
         verticalLayout_5->setObjectName("verticalLayout_5");
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_4 = new QHBoxLayout();
@@ -87,12 +90,12 @@ public:
         verticalLayout_2->setObjectName("verticalLayout_2");
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        deleteUserButton = new QPushButton(widget);
+        deleteUserButton = new QPushButton(layoutWidget);
         deleteUserButton->setObjectName("deleteUserButton");
 
         horizontalLayout_2->addWidget(deleteUserButton);
 
-        viewUsersButton = new QPushButton(widget);
+        viewUsersButton = new QPushButton(layoutWidget);
         viewUsersButton->setObjectName("viewUsersButton");
 
         horizontalLayout_2->addWidget(viewUsersButton);
@@ -100,7 +103,7 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_2);
 
-        listWidgetUsers = new QListWidget(widget);
+        listWidgetUsers = new QListWidget(layoutWidget);
         listWidgetUsers->setObjectName("listWidgetUsers");
 
         verticalLayout_2->addWidget(listWidgetUsers);
@@ -110,7 +113,7 @@ public:
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
-        listWidgetCategories = new QListWidget(widget);
+        listWidgetCategories = new QListWidget(layoutWidget);
         listWidgetCategories->setObjectName("listWidgetCategories");
 
         verticalLayout_4->addWidget(listWidgetCategories);
@@ -119,12 +122,12 @@ public:
         verticalLayout_3->setObjectName("verticalLayout_3");
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        deleteCategoryButton = new QPushButton(widget);
+        deleteCategoryButton = new QPushButton(layoutWidget);
         deleteCategoryButton->setObjectName("deleteCategoryButton");
 
         horizontalLayout_3->addWidget(deleteCategoryButton);
 
-        addCategoryButton = new QPushButton(widget);
+        addCategoryButton = new QPushButton(layoutWidget);
         addCategoryButton->setObjectName("addCategoryButton");
 
         horizontalLayout_3->addWidget(addCategoryButton);
@@ -132,7 +135,7 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_3);
 
-        viewCategoriesButton = new QPushButton(widget);
+        viewCategoriesButton = new QPushButton(layoutWidget);
         viewCategoriesButton->setObjectName("viewCategoriesButton");
 
         verticalLayout_3->addWidget(viewCategoriesButton);
@@ -150,12 +153,12 @@ public:
         verticalLayout->setObjectName("verticalLayout");
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        deleteProductButton = new QPushButton(widget);
+        deleteProductButton = new QPushButton(layoutWidget);
         deleteProductButton->setObjectName("deleteProductButton");
 
         horizontalLayout->addWidget(deleteProductButton);
 
-        viewProductsButton = new QPushButton(widget);
+        viewProductsButton = new QPushButton(layoutWidget);
         viewProductsButton->setObjectName("viewProductsButton");
 
         horizontalLayout->addWidget(viewProductsButton);
@@ -163,7 +166,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        listWidgetProducts = new QListWidget(widget);
+        listWidgetProducts = new QListWidget(layoutWidget);
         listWidgetProducts->setObjectName("listWidgetProducts");
 
         verticalLayout->addWidget(listWidgetProducts);
@@ -171,15 +174,15 @@ public:
 
         verticalLayout_5->addLayout(verticalLayout);
 
-        widget1 = new QWidget(centralwidget);
-        widget1->setObjectName("widget1");
-        widget1->setGeometry(QRect(500, 110, 258, 232));
-        verticalLayout_6 = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(500, 110, 258, 232));
+        verticalLayout_6 = new QVBoxLayout(layoutWidget1);
         verticalLayout_6->setObjectName("verticalLayout_6");
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName("horizontalLayout_5");
-        comboBoxRatingFilter = new QComboBox(widget1);
+        comboBoxRatingFilter = new QComboBox(layoutWidget1);
         comboBoxRatingFilter->addItem(QString());
         comboBoxRatingFilter->addItem(QString());
         comboBoxRatingFilter->addItem(QString());
@@ -191,7 +194,7 @@ public:
 
         horizontalLayout_5->addWidget(comboBoxRatingFilter);
 
-        buttonDeleteReview = new QPushButton(widget1);
+        buttonDeleteReview = new QPushButton(layoutWidget1);
         buttonDeleteReview->setObjectName("buttonDeleteReview");
 
         horizontalLayout_5->addWidget(buttonDeleteReview);
@@ -199,7 +202,7 @@ public:
 
         verticalLayout_6->addLayout(horizontalLayout_5);
 
-        listWidgetReviews = new QListWidget(widget1);
+        listWidgetReviews = new QListWidget(layoutWidget1);
         listWidgetReviews->setObjectName("listWidgetReviews");
 
         verticalLayout_6->addWidget(listWidgetReviews);
@@ -208,10 +211,14 @@ public:
         menubar = new QMenuBar(AdminWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 800, 25));
+        menuAdmin_cocpit = new QMenu(menubar);
+        menuAdmin_cocpit->setObjectName("menuAdmin_cocpit");
         AdminWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(AdminWindow);
         statusbar->setObjectName("statusbar");
         AdminWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menuAdmin_cocpit->menuAction());
 
         retranslateUi(AdminWindow);
 
@@ -242,6 +249,7 @@ public:
         comboBoxRatingFilter->setItemText(5, QCoreApplication::translate("AdminWindow", "5", nullptr));
 
         buttonDeleteReview->setText(QCoreApplication::translate("AdminWindow", "Delete Revievs", nullptr));
+        menuAdmin_cocpit->setTitle(QCoreApplication::translate("AdminWindow", "Admin cocpit", nullptr));
     } // retranslateUi
 
 };

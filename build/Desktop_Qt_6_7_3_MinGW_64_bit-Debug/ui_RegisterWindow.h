@@ -25,7 +25,7 @@ class Ui_RegisterWindow
 {
 public:
     QPushButton *pushButton_2;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLineEdit *usernameEdit;
@@ -38,45 +38,45 @@ public:
     {
         if (RegisterWindow->objectName().isEmpty())
             RegisterWindow->setObjectName("RegisterWindow");
-        RegisterWindow->resize(400, 300);
+        RegisterWindow->resize(425, 327);
         pushButton_2 = new QPushButton(RegisterWindow);
         pushButton_2->setObjectName("pushButton_2");
         pushButton_2->setGeometry(QRect(300, 260, 90, 29));
-        widget = new QWidget(RegisterWindow);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(130, 40, 127, 190));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(RegisterWindow);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(130, 40, 127, 190));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName("label");
 
         verticalLayout->addWidget(label);
 
-        usernameEdit = new QLineEdit(widget);
+        usernameEdit = new QLineEdit(layoutWidget);
         usernameEdit->setObjectName("usernameEdit");
 
         verticalLayout->addWidget(usernameEdit);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName("label_2");
 
         verticalLayout->addWidget(label_2);
 
-        passwordEdit = new QLineEdit(widget);
+        passwordEdit = new QLineEdit(layoutWidget);
         passwordEdit->setObjectName("passwordEdit");
         passwordEdit->setEchoMode(QLineEdit::EchoMode::Password);
 
         verticalLayout->addWidget(passwordEdit);
 
-        accountTypeComboBox = new QComboBox(widget);
+        accountTypeComboBox = new QComboBox(layoutWidget);
         accountTypeComboBox->addItem(QString());
         accountTypeComboBox->addItem(QString());
         accountTypeComboBox->setObjectName("accountTypeComboBox");
 
         verticalLayout->addWidget(accountTypeComboBox);
 
-        registerButton = new QPushButton(widget);
+        registerButton = new QPushButton(layoutWidget);
         registerButton->setObjectName("registerButton");
 
         verticalLayout->addWidget(registerButton);

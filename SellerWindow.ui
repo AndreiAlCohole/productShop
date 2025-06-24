@@ -97,6 +97,12 @@
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuSellers_Cocpipt">
+    <property name="title">
+     <string>Sellers Cocpipt</string>
+    </property>
+   </widget>
+   <addaction name="menuSellers_Cocpipt"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

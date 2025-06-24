@@ -29,7 +29,7 @@ void MainWindow::on_loginButton_clicked()
     if (user) {
         loginUser(user);
     } else {
-        QMessageBox::warning(this, "Błąd logowania", "Niepoprawny login lub hasło.");
+        QMessageBox::warning(this, "Login error", "Incorrect username or password.");
     }
 }
 
@@ -61,8 +61,8 @@ void MainWindow::on_registerButton_clicked()
     if (regDialog.exec() == QDialog::Accepted) {
         std::shared_ptr<User> newUser = regDialog.getNewUser();
         if (newUser) {
-            controller->addUser(newUser); // <- używasz controller, nie appController
-            QMessageBox::information(this, "Sukces", "Użytkownik zarejestrowany.");
+            controller->addUser(newUser);
+            QMessageBox::information(this, "Success", "User registered.");
         }
     }
 }
@@ -74,5 +74,5 @@ void MainWindow::showLoginScreen() {
 void MainWindow::on_exitButton_clicked()
 {
     controller->saveData();
-    QApplication::quit(); // lub qApp->quit();
+    QApplication::quit();
 }

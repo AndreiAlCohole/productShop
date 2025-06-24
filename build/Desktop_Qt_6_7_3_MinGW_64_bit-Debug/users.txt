@@ -10,3 +10,6 @@ Buyer;abc;abc
 Seller;s;s
 Buyer;Jajami;Omate
 Buyer;abcd;abcd
+Buyer;testowykupiec123;testowykupiec123
+Buyer;Jan;Kowalski
+Seller;seller;seller

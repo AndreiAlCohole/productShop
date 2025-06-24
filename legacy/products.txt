@@ -1,0 +1,6 @@
+1;Laptop;2999.99;10;Gaming laptop;Elektronika;TestShop;testseller;0
+2;Smartphone;1999.99;15;Latest model;Elektronika;TestShop;testseller;0
+3;Headphones;299.99;20;Noise cancelling;Elektronika;TestShop;testseller;0
+4;T-shirt;49.99;50;Cotton, size M;Moda;TestShop;testseller;0
+5;Sneakers;299.99;27;Comfortable running shoes;Moda;TestShop;testseller;3
+6;KebabMieszany;2;990;DobryKebab;Zdrowie i Uroda;Alibaba;s;10

@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -238,6 +238,12 @@
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuBuyers_Cocpit">
+    <property name="title">
+     <string>Buyers Cocpit</string>
+    </property>
+   </widget>
+   <addaction name="menuBuyers_Cocpit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
